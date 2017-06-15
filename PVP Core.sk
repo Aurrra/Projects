@@ -1,0 +1,53 @@
+# Stolen PVP Core
+#   Author - Aura
+#   
+#   Dependencies ~>
+#       - Skript
+#       - SkQuery
+#       - SkRayFall
+#       - Essentials
+#       - Essentials Chat
+#       - Permissions Plugin (Group Manager, PermissionsEx)
+#       - Vault
+#
+#   Version ~ 1.0
+
+# Change as you wish
+options:
+    
+    # Put your server name here!
+    server: &8[&6YourServer&8]
+
+    joinmsg: &8[&a+&8] &7%player%
+    staffjoinmsg: &8[&6+&8] &7%player%
+    leavemsg: &8[&c-&8] &7%player%
+    staffleavemsg: &8[&6-&8] &7%player%
+
+# On skript load! Do not edit
+on load:
+    broadcast "&6&lSTOLEN) &7Successfully reloaded!"
+    broadcast "&6&lVER) &7Version » &e1.0"
+
+# Join & Leave Messages
+on join:
+    if {staff.%player%} is true:
+        set join message to "{@staffjoinmsg}"
+    else if {staff.%player%} is false:
+        set join message to "{@joinmsg}"
+    else if {staff.%player%} isn't set:
+        set join message to "{@joinmsg}"
+on join:
+    message "&8&m---------------------------------"
+    message ""
+    message "{@server} &7PVP, Duels and more!"
+    message ""
+    message "           &e%player%"
+    message ""
+    message "&8&m---------------------------------"
+on disconnect:
+    if {staff.%player%} is true:
+        set leave message to "{@staffleavemsg}"
+    else if {staff.%player%} is false:
+        set leave message to "{@leavemsg}"
+    else if {staff.%player%} isn't set:
+        set leave message to "{@leavemsg}"
